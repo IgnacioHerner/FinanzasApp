@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/homeFragment">
+
+    <!-- Home -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ignaherner.finanzasapp.ui.home.HomeFragment"
+        android:label="Inicio">
+        <action
+            android:id="@+id/action_homeFragment_to_addTransactionFragment"
+            app:destination="@id/addTransactionFragment" />
+    </fragment>
+
+    <!-- Transacciones -->
+    <fragment
+        android:id="@+id/transactionsFragment"
+        android:name="com.ignaherner.finanzasapp.ui.transactions.TransactionsFragment"
+        android:label="Transacciones" />
+
+    <fragment
+        android:id="@+id/addTransactionFragment"
+        android:name="com.ignaherner.finanzasapp.ui.addtransaction.AddTransactionFragment"
+        android:label="Agregar">
+        <action
+            android:id="@+id/action_addTransactionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <!-- Cuentas -->
+    <fragment
+        android:id="@+id/accountsFragment"
+        android:name="com.ignaherner.finanzasapp.ui.accounts.AccountsFragment"
+        android:label="Cuentas" />
+
+    <!-- Resúmenes -->
+    <fragment
+        android:id="@+id/monthlySummaryFragment"
+        android:name="com.ignaherner.finanzasapp.ui.summary.MonthlySummaryFragment"
+        android:label="Resumen mensual" />
+
+    <fragment
+        android:id="@+id/categorySummaryFragment"
+        android:name="com.ignaherner.finanzasapp.ui.summary.CategorySummaryFragment"
+        android:label="Por categoría" />
+
+    <!-- Menú principal -->
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.ignaherner.finanzasapp.ui.menu.MenuFragment"
+        android:label="Menú">
+        <action
+            android:id="@+id/action_menuFragment_to_accountsFragment"
+            app:destination="@id/accountsFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_recurringFragment"
+            app:destination="@id/recurringFragment" />
+        <!--
+        <action
+            android:id="@+id/action_menuFragment_to_savingsFragment"
+            app:destination="@id/savingsFragment" /> -->
+        <action
+            android:id="@+id/action_menuFragment_to_monthlySummaryFragment"
+            app:destination="@id/monthlySummaryFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_categorySummaryFragment"
+            app:destination="@id/categorySummaryFragment" />
+        <!--
+        <action
+            android:id="@+id/action_menuFragment_to_creditFragment"
+            app:destination="@id/creditFragment" /> -->
+        <!--
+        <action
+            android:id="@+id/action_menuFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" /> -->
+    </fragment>
+
+    <!-- Gastos recurrentes -->
+    <fragment
+        android:id="@+id/recurringFragment"
+        android:name="com.ignaherner.finanzasapp.ui.recurring.RecurringFragment"
+        android:label="Gastos recurrentes" />
+
+    <!-- Ahorros
+    <fragment
+        android:id="@+id/savingsFragment"
+        android:name="com.ignaherner.finanzasapp.ui.savings.SavingsFragment"
+        android:label="Ahorros" />  -->
+
+    <!-- Alta / edición de Tarjeta de Crédito -->
+
+
+
+    <!-- Calendario diario
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.ignaherner.finanzasapp.ui.calendarview.CalendarFragment"
+        android:label="Vista diaria" /> -->
+
+    <!-- Configuración
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ignaherner.finanzasapp.ui.settings.SettingsFragment"
+        android:label="Configuración" />  -->
+</navigation>

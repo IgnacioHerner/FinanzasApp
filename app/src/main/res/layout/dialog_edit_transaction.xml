@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etTitleEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Título"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etAmountEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Monto"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="8dp" />
+
+    <RadioGroup
+        android:id="@+id/rgTypeEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/rbIncomeEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingreso" />
+
+        <RadioButton
+            android:id="@+id/rbExpenseEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gasto"
+            android:layout_marginStart="16dp" />
+    </RadioGroup>
+
+</LinearLayout>
