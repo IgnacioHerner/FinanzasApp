@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:startDestination="@id/homeFragment">
 
@@ -67,10 +66,9 @@
         <action
             android:id="@+id/action_menuFragment_to_categorySummaryFragment"
             app:destination="@id/categorySummaryFragment" />
-        <!--
         <action
             android:id="@+id/action_menuFragment_to_creditFragment"
-            app:destination="@id/creditFragment" /> -->
+            app:destination="@id/creditFragment" />
         <!--
         <action
             android:id="@+id/action_menuFragment_to_calendarFragment"
@@ -94,7 +92,27 @@
 
     <!-- Alta / edición de Tarjeta de Crédito -->
 
+    <fragment
+        android:id="@+id/creditFragment"
+        android:name="com.ignaherner.finanzasapp.ui.credit.CreditFragment"
+        android:label="Tarjetas de Crédito">
 
+        <action
+            android:id="@+id/action_creditFragment_to_addEditCreditFragment"
+            app:destination="@id/addEditCreditFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/addEditCreditFragment"
+        android:name="com.ignaherner.finanzasapp.ui.credit.AddEditCreditFragment"
+        android:label="Agregar/Editar Tarjeta">
+
+        <argument
+            android:name="cardId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 
     <!-- Calendario diario
     <fragment

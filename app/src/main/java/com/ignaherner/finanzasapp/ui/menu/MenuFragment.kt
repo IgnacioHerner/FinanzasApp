@@ -45,9 +45,9 @@ class MenuFragment : Fragment() {
             findNavController().navigate(R.id.action_menuFragment_to_categorySummaryFragment)
         }
 
-        //binding.cardCredit.setOnClickListener {
-            //findNavController().navigate(R.id.action_menuFragment_to_creditFragment)
-        //}
+        binding.cardCredit.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_creditFragment)
+        }
 
         //binding.cardCalendar.setOnClickListener {
             //findNavController().navigate(R.id.action_menuFragment_to_calendarFragment)
