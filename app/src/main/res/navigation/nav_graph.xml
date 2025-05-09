@@ -28,6 +28,19 @@
             app:destination="@id/homeFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/creditDetailFragment"
+        android:name="com.ignaherner.finanzasapp.ui.credit.CreditDetailFragment"
+        android:label="Detalle Tarjeta">
+        <argument
+            android:name="cardId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_creditDetailFragment_to_addCreditTransactionFragment"
+            app:destination="@id/addCreditTransactionFragment" />
+    </fragment>
+
+
     <!-- Cuentas -->
     <fragment
         android:id="@+id/accountsFragment"
@@ -98,8 +111,21 @@
         android:label="Tarjetas de Crédito">
 
         <action
+            android:id="@+id/action_creditFragment_to_addCreditTransactionFragment"
+            app:destination="@id/addCreditTransactionFragment" />
+
+        <action
             android:id="@+id/action_creditFragment_to_addEditCreditFragment"
             app:destination="@id/addEditCreditFragment" />
+
+        <action
+            android:id="@+id/action_creditFragment_to_creditDetailFragment"
+            app:destination="@id/creditDetailFragment" >
+            <argument
+                android:name="cardId"
+                app:argType="integer" />
+        </action>
+
     </fragment>
 
 
@@ -113,6 +139,18 @@
             android:defaultValue="0"
             app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/addCreditTransactionFragment"
+        android:name="com.ignaherner.finanzasapp.ui.credit.AddCreditTransactionFragment"
+        android:label="Agregar consumo">
+
+        <argument
+            android:name="cardId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
 
     <!-- Calendario diario
     <fragment

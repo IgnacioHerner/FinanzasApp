@@ -5,6 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.ignaherner.finanzasapp.model.converters.Converters
 
 @Database(
@@ -13,7 +15,7 @@ import com.ignaherner.finanzasapp.model.converters.Converters
         RecurringTransactionEntity::class,
         CreditCardEntity::class,
         CreditTransactionEntity::class
-    ], version = 2, exportSchema = false
+    ], version = 5, exportSchema = false
 )
 @TypeConverters(Converters::class)
 
@@ -39,7 +41,20 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "finanzas_db"
                 )
+                    .fallbackToDestructiveMigration()
                     .build().also { INSTANCE = it }
             }
     }
+
 }
+
+val MIGRATION_2_3 = object : Migration(2, 3) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        // Agregar columna currency a la tabla transactions
+        database.execSQL("ALTER TABLE transactions ADD COLUMN currency TEXT NOT NULL DEFAULT 'ARS'")
+
+        // Agregar columna currency a la tabla recurring_transactions
+        database.execSQL("ALTER TABLE recurring_transactions ADD COLUMN currency TEXT NOT NULL DEFAULT 'ARS'")
+    }
+}
+

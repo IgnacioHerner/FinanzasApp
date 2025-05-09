@@ -50,14 +50,29 @@ class CreditFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        adapter = CreditAdapter(emptyList())
+        adapter = CreditAdapter(
+            emptyList(),
+            onItemClick = { cardWithUsage ->
+                val action = CreditFragmentDirections
+                    .actionCreditFragmentToCreditDetailFragment(cardWithUsage.card.id)
+                findNavController().navigate(action)
+            },
+            onAddUsageClick = { cardId ->
+                val action = CreditFragmentDirections
+                    .actionCreditFragmentToAddCreditTransactionFragment(cardId)
+                findNavController().navigate(action)
+            }
+        )
+
+
         binding.rvCreditCards.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCreditCards.adapter = adapter
 
         // Observar tarjetas con uso
-        viewModel.cardsWithUsage.asLiveData().observe(viewLifecycleOwner) { list: List<CreditCardWithUsage> ->
+        viewModel.cardsWithUsage.asLiveData().observe(viewLifecycleOwner) { list ->
             adapter.updateData(list)
         }
+
 
         // FAB para agregar nueva tarjeta
         binding.fabAddCard.setOnClickListener {

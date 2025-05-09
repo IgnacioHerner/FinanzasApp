@@ -48,11 +48,12 @@ class AddEditCreditFragment : Fragment() {
         editingCardId = args.cardId
         isEditing = editingCardId != 0
 
+
         if (isEditing) {
             lifecycleScope.launch {
-                val card = viewModel.getById(editingCardId).await()
+                val card = viewModel.getById(editingCardId)
                 card?.let {
-                    binding.etCardName.setText(it.name)
+                    binding.etName.setText(it.name)
                     binding.etLimit.setText(it.limit.toString())
                     binding.etDueDate.setText(it.dueDate.toString())
                     binding.etCutDate.setText(it.cutDate.toString())
@@ -61,8 +62,8 @@ class AddEditCreditFragment : Fragment() {
         }
 
 
-        binding.btnSaveCard.setOnClickListener {
-            val name = binding.etCardName.text.toString()
+        binding.btnSave.setOnClickListener {
+            val name = binding.etName.text.toString()
             val limit = binding.etLimit.text.toString().toDoubleOrNull()
             val dueDate = binding.etDueDate.text.toString().toIntOrNull()
             val cutDate = binding.etCutDate.text.toString().toIntOrNull()

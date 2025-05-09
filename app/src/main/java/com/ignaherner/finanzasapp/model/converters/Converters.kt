@@ -3,6 +3,7 @@ package com.ignaherner.finanzasapp.model.converters
 import androidx.room.TypeConverter
 import com.ignaherner.finanzasapp.model.Account
 import com.ignaherner.finanzasapp.model.Category
+import com.ignaherner.finanzasapp.model.Currency
 import com.ignaherner.finanzasapp.model.RecurrenceType
 import com.ignaherner.finanzasapp.model.TransactionType
 import java.time.LocalDate
@@ -38,4 +39,11 @@ class Converters {
 
     @TypeConverter
     fun toRecurrenceType(value: String) : RecurrenceType = RecurrenceType.valueOf(value)
+
+    @TypeConverter
+    fun fromCurrency(value: Currency): String = value.name
+
+    @TypeConverter
+    fun toCurrency(value: String): Currency = Currency.valueOf(value)
+
 }

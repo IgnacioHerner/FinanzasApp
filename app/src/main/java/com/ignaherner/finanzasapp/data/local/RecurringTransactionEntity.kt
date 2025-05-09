@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.ignaherner.finanzasapp.model.Account
 import com.ignaherner.finanzasapp.model.Category
+import com.ignaherner.finanzasapp.model.Currency
 import com.ignaherner.finanzasapp.model.RecurrenceType
 import com.ignaherner.finanzasapp.model.TransactionType
 import java.time.LocalDate
@@ -18,6 +19,7 @@ data class RecurringTransactionEntity(
     val account: Account,
     val startDate: LocalDate,
     val recurrence: RecurrenceType,
-    val lastExecuteDate: LocalDate? = null,
+    val currency: Currency = Currency.ARS,
+    val lastExecuteDate: LocalDate? = null
 
 )

@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.ignaherner.finanzasapp.model.Account
 import com.ignaherner.finanzasapp.model.Category
+import com.ignaherner.finanzasapp.model.Currency
 import com.ignaherner.finanzasapp.model.TransactionType
 import java.time.LocalDate
 
@@ -16,5 +17,6 @@ data class TransactionEntity(
     val account: Account,
     val category: Category,
     val date: LocalDate,
-    val isPaid: Boolean = true
+    val isPaid: Boolean = true,
+    val currency: Currency = Currency.ARS
 )

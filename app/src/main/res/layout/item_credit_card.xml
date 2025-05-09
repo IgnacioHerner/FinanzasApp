@@ -55,6 +55,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp"/>
 
+        <!-- Botón para registrar consumo -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddUsage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrar consumo"
+            style="?attr/materialButtonOutlinedStyle"
+            app:layout_constraintTop_toBottomOf="@id/tvDueDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"/>
+
         <ProgressBar
             android:id="@+id/progressUsage"
             style="?android:attr/progressBarStyleHorizontal"
@@ -63,7 +74,7 @@
             android:progress="40"
             android:max="100"
             android:progressTint="@color/material_dynamic_neutral70"
-            app:layout_constraintTop_toBottomOf="@id/tvDueDate"
+            app:layout_constraintTop_toBottomOf="@id/btnAddUsage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp"/>

@@ -7,26 +7,34 @@ import com.ignaherner.finanzasapp.databinding.ItemCreditCardBinding
 import com.ignaherner.finanzasapp.model.CreditCardWithUsage
 
 class CreditAdapter(
-    private var cards: List<CreditCardWithUsage>
+    private var cards: List<CreditCardWithUsage>,
+    private val onItemClick: (CreditCardWithUsage) -> Unit,
+    private val onAddUsageClick: (Int) -> Unit  // cardId
 ) : RecyclerView.Adapter<CreditAdapter.CreditViewHolder>() {
 
     inner class CreditViewHolder(private val binding: ItemCreditCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(cardUsage: CreditCardWithUsage) {
-            val card = cardUsage.card
-            val used = cardUsage.used
+        fun bind(cardWithUsage: CreditCardWithUsage) {
+            val card = cardWithUsage.card
+            val used = cardWithUsage.used
             val available = card.limit - used
-            val percentUsed = if (card.limit > 0) ((used / card.limit) * 100).toInt() else 0
 
             binding.tvCardName.text = card.name
             binding.tvLimit.text = "Límite: $${"%.2f".format(card.limit)}"
             binding.tvAvailable.text = "Disponible: $${"%.2f".format(available)}"
             binding.tvDueDate.text = "Vencimiento: ${card.dueDate}/mes"
 
-            binding.progressUsage.apply {
-                max = 100
-                progress = percentUsed.coerceIn(0, 100)
+            val percentUsed = if (card.limit > 0) ((used / card.limit) * 100).toInt() else 0
+            binding.progressUsage.max = 100
+            binding.progressUsage.progress = percentUsed.coerceIn(0, 100)
+
+            binding.btnAddUsage.setOnClickListener {
+                onAddUsageClick(card.id)
+            }
+
+            binding.root.setOnClickListener {
+                onItemClick(cardWithUsage)
             }
         }
     }

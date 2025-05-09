@@ -49,8 +49,9 @@ class CreditCardViewModel(
         }
     }
 
-    fun getById(id: Int): Deferred<CreditCardEntity?> = viewModelScope.async {
-        cardRepo.getById(id)
+    suspend fun getById(id: Int): CreditCardEntity? {
+        return cardRepo.getById(id)
     }
+
 
 }
